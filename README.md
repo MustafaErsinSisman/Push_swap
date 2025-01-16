@@ -1,1 +1,1 @@
-# Push_swap
+This project is a "Push Swap" implementation utilizing the [Turkish algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97). It sorts integers received from the standard input in ascending order. I did this project in Ecole 42 School's 42 Istanbul Campus.
