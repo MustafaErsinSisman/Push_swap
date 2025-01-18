@@ -1,31 +1,29 @@
-SRCS = push_swap.c push_swap_utils.c 
 
-BONUS = checker
+NAME 		= push_swap
+BONUS		= checker
+CC			= gcc
+FLAGS 		= -Wall -Wextra -Werror
+SRCS		= push_swap.c push_swap_utils.c
 
-OBJS = $(SRCS:.c=.o)
-BONUSOBJS = $(BONUS:.c=.o)
+OBJS		:= $(SRCS:.c=.o)
 
-NAME = pushswap
-
-CC = cc
-
-CFLAGS = -Wall -Wextra -Werror
+AR_LIBFT	= libft/libft.a
+DIR_LIBFT	= libft
 
 all: $(NAME)
 
-$(NAME): $(OBJS) bonus
-	ar rc $(NAME) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
-bonus: $(BONUSOBJS)
-	ar rc $(NAME) $(BONUSOBJS)
+$(NAME): $(OBJS)
+	make -C $(DIR_LIBFT) -s
+	$(CC) $(FLAGS) $(OBJS) $(AR_LIBFT) -o $(NAME)
 
 clean:
-	rm -rf $(OBJS) $(BONUSOBJS)
+	rm -f $(OBJS) $(OBJS_BNS)
+	make -s -C $(DIR_LIBFT) clean
 
 fclean: clean
 	rm -f $(NAME)
+	make -s -C $(DIR_LIBFT) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean bonus re
