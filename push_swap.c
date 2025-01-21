@@ -26,37 +26,64 @@ int not_Integer(char *s)
                         return  (0);
         return  (1);
 }
-
-int main(int ac, char **av)
+int safe_atoi(const char *str, long *result)
 {
-        if(ac >= 2)
-        {
-                int i;
-                int dc;
-                long value;
+    size_t i;
+    int sign;
 
-                dc = ac - 1;
-                while (dc > 0)
+    i = 0;
+    sign = 1;
+    *result = 0;
+    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+        i++;
+    if (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-')
+            sign = -1;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        *result = *result * 10 + (str[i] - '0');
+        if ((*result * sign) > INT_MAX || (*result * sign) < INT_MIN)
+            return (0);
+        i++;
+    }
+    if (str[i] != '\0')
+        return (0);
+    *result *= sign;
+    return (1);
+}
+int check_args(int ac, char **av)
+{
+        int dc;
+        long value;
+
+        dc = ac -1;
+         while (dc > 0)
                 {
                         if(!not_Integer(av[dc]))
                         {
                                 ft_printf("Error\n");
                                 return (0);
                         }
-                        value = 0;
-                        i = -1;
-                        if (av[dc][i + 1] == '-' || av[dc][i + 1] == '+')
-                                i++;
-                        while (av[dc][++i])
-                                value = (av[dc][i] - '0') + (value * 10);
-                        printf("*%lu* ",value);
-                        if(value > INT_MAX || value < INT_MIN)
-                        {        
+                        if (!safe_atoi(av[dc], &value))
+                        {
                                 ft_printf("Error\n");
                                 return (0);
                         }
                         dc--;
                 }
+        return (1);
+}
+int main(int ac, char **av)
+{
+        if(ac >= 2)
+        {
+                int i;
+                
+                if (!check_args(ac, av))
+                        return (0);
                 i = 0;
                 while (++i < ac)
                         ft_printf("%s ", av[i]);
