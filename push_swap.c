@@ -71,31 +71,10 @@ int main(int ac, char **av)
 {
         if(ac >= 2)
         {
-                int fd = open("stderr_output.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
-                if (fd < 0)
-                {
-                    ft_printf(2, "Error: Could not open file\n");
-                    return (1);
-                }
-                dup2(fd, 2);
                 if (!check_args(ac, av))
-                {
                         ft_printf(2, "Error\n");
-                        close(fd);
-                }
                 else
                         ft_printf(1, "Correct\n");
-
-
-                char ss[256];
-                int b = read(fd,ss,sizeof(ss) - 1);
-                lseek(fd, 0, SEEK_SET);
-                if (b > 0)
-                {
-                    ss[b] = '\0';
-                    ft_printf(1, "Captured stderr: %s\n", ss);
-                }
-                close(fd);
         }
         return (0);
 }
