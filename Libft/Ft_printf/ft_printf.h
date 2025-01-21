@@ -17,10 +17,10 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_putchar(int c);
-int	ft_putstr(char *s);
-int	ft_putnbr_base(long nbr, char *base);
-int	ft_ptrnbr(void *ptr);
-int	ft_printf(const char *s, ...);
+int	ft_putchar(int c, int fd);
+int	ft_putstr(char *s, int fd);
+int	ft_putnbr_base(long nbr, char *base, int fd);
+int	ft_ptrnbr(void *ptr, int fd);
+int	ft_printf(int fd, const char *s, ...);
 
 #endif

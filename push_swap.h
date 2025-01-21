@@ -17,6 +17,8 @@
 # include "./libft/ft_printf/ft_printf.h"
 # include <limits.h>
 # include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
 
 

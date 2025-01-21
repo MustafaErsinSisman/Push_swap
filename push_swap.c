@@ -26,7 +26,7 @@ int not_Integer(char *s)
                         return  (0);
         return  (1);
 }
-int safe_atoi(const char *str, long *result)
+int check_atoi(const char *str, long *result)
 {
     size_t i;
     int sign;
@@ -56,40 +56,46 @@ int safe_atoi(const char *str, long *result)
 }
 int check_args(int ac, char **av)
 {
-        int dc;
         long value;
 
-        dc = ac -1;
-         while (dc > 0)
-                {
-                        if(!not_Integer(av[dc]))
-                        {
-                                ft_printf("Error\n");
-                                return (0);
-                        }
-                        if (!safe_atoi(av[dc], &value))
-                        {
-                                ft_printf("Error\n");
-                                return (0);
-                        }
-                        dc--;
-                }
+        while (--ac > 0)
+        {
+                if(!not_Integer(av[ac]))
+                        return (0);
+                if (!check_atoi(av[ac], &value))
+                        return (0);
+        }
         return (1);
 }
 int main(int ac, char **av)
 {
         if(ac >= 2)
         {
-                int i;
-                
+                int fd = open("stderr_output.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+                if (fd < 0)
+                {
+                    ft_printf(2, "Error: Could not open file\n");
+                    return (1);
+                }
+                dup2(fd, 2);
                 if (!check_args(ac, av))
-                        return (0);
-                i = 0;
-                while (++i < ac)
-                        ft_printf("%s ", av[i]);
-                ft_printf("\n");
+                {
+                        ft_printf(2, "Error\n");
+                        close(fd);
+                }
+                else
+                        ft_printf(1, "Correct\n");
+
+
+                char ss[256];
+                int b = read(fd,ss,sizeof(ss) - 1);
+                lseek(fd, 0, SEEK_SET);
+                if (b > 0)
+                {
+                    ss[b] = '\0';
+                    ft_printf(1, "Captured stderr: %s\n", ss);
+                }
+                close(fd);
         }
-        else
-                ft_printf("Error\n");
-        return 0;
+        return (0);
 }
