@@ -12,31 +12,31 @@
 
 #include "ft_printf.h"
 
-static int	flags(int c, va_list args, int fd)
+static int	flags(int c, va_list args)
 {
 	if (c == 'c')
-		return (ft_putchar(va_arg(args, int), fd));
+		return (ft_putchar(va_arg(args, int)));
 	else if (c == 's')
-		return (ft_putstr(va_arg(args, char *), fd));
+		return (ft_putstr(va_arg(args, char *)));
 	else if (c == 'p')
-		return (ft_ptrnbr(va_arg(args, void *), fd));
+		return (ft_ptrnbr(va_arg(args, void *)));
 	else if (c == 'd')
-		return (ft_putnbr_base(va_arg(args, int), "0123456789", fd));
+		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	else if (c == 'i')
-		return (ft_putnbr_base(va_arg(args, int), "0123456789",  fd));
+		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	else if (c == 'u')
-		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789", fd));
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789"));
 	else if (c == 'x')
-		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef", fd));
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef"));
 	else if (c == 'X')
-		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF", fd));
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
 	else if (c == '%')
-		return (ft_putchar('%', fd));
+		return (ft_putchar('%'));
 	else
 		return (0);
 }
 
-int	ft_printf(int fd, const char *s, ...)
+int	ft_printf(const char *s, ...)
 {
 	int		i;
 	int		len;
@@ -50,10 +50,10 @@ int	ft_printf(int fd, const char *s, ...)
 		if (s[i] == '%')
 		{
 			i++;
-			len += flags(s[i], args, fd);
+			len += flags(s[i], args);
 		}
 		else
-			len += ft_putchar(s[i], fd);
+			len += ft_putchar(s[i]);
 		i++;
 	}
 	va_end(args);
