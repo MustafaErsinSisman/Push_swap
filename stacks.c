@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:49:09 by musisman          #+#    #+#             */
-/*   Updated: 2025/01/28 19:47:11 by musisman         ###   ########.fr       */
+/*   Updated: 2025/01/28 22:01:48 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*stack_a(int ac, char **av)
 {
-	t_list	*a ;
+	t_list	*a;
 	t_list	*node;
 	int		i;
 	int		*value;
@@ -33,14 +33,4 @@ t_list	*stack_a(int ac, char **av)
 		i++;
 	}
 	return (a);
-}
-
-t_list	*stack_b(void)
-{
-	t_list	*b;
-	t_list	*node;
-
-	node = NULL;
-	b = node;
-	return (b);
 }

@@ -20,16 +20,50 @@ int	main(int ac, char **av)
 			write(2, "Error\n", 6);
 		else
 		{
-			int i;
+			t_list *a;
+			t_list *b;
 
-			i = 1;
-			t_list *tmp = stack_a(ac,av);
+			a = stack_a(ac, av);
+			b = NULL;
+			t_list *tmp = a;
+			printf("Başlangıç durumu:\n");
 			while(tmp)
 			{
-				printf("node%d : %d\n",i++,*(int *)(tmp->content));
+				printf("%d\n",*(int *)(tmp->content));
 				tmp = tmp->next;
 			}
-			ft_lstclear(&tmp, free);
+			pb(&a,&b);
+			printf("\nİlk pb sonrası:\n\nA stack:\n");
+			tmp = a;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			printf("\nB stack:\n");
+			tmp = b;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			pb(&a,&b);
+			printf("\nİkinci pb sonrası:\n\nA stack:\n");
+			tmp = a;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			printf("\nB stack:\n");
+			tmp = b;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			ft_lstclear(&a, free);
+			ft_lstclear(&b, free);
 		}
 	}
 	return (0);
