@@ -16,8 +16,13 @@
 # include "./libft/libft.h"
 # include "./libft/ft_printf/ft_printf.h"
 # include <limits.h>
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+
+int		check_args(int ac, char **av);
+t_list	*stack_a(int ac, char **av);
+t_list	*stack_b(void);
 
 #endif

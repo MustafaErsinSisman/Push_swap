@@ -3,7 +3,8 @@ NAME 		= push_swap
 BONUS		= checker
 CC			= gcc
 FLAGS 		= -Wall -Wextra -Werror
-SRCS		= push_swap.c push_swap_utils.c
+SRCS		= push_swap.c push_swap_utils.c stacks.c push.c \
+		  checks.c
 
 OBJS		:= $(SRCS:.c=.o)
 

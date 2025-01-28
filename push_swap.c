@@ -12,64 +12,6 @@
 
 #include "push_swap.h"
 
-int	not_integer(char *s)
-{	
-	int	i;
-
-	if (!s)
-		return (0);
-	i = -1;
-	if (s[i + 1] == '-' || s[i + 1] == '+')
-		i++;
-	while (s[++i])
-		if (s[i] < '0' || s[i] > '9')
-			return (0);
-	return (1);
-}
-
-int	check_atoi(const char *str, long *result)
-{
-	size_t	i;
-	int		sign;
-
-	i = 0;
-	sign = 1;
-	*result = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		*result = *result * 10 + (str[i] - '0');
-		if ((*result * sign) > INT_MAX || (*result * sign) < INT_MIN)
-			return (0);
-		i++;
-	}
-	if (str[i] != '\0')
-		return (0);
-	*result *= sign;
-	return (1);
-}
-
-int	check_args(int ac, char **av)
-{
-	long	value;
-
-	while (--ac > 0)
-	{
-		if (!not_integer(av[ac]))
-			return (0);
-		if (!check_atoi(av[ac], &value))
-			return (0);
-	}
-	return (1);
-}
-
 int	main(int ac, char **av)
 {
 	if (ac >= 2)
@@ -77,7 +19,60 @@ int	main(int ac, char **av)
 		if (!check_args(ac, av))
 			write(2, "Error\n", 6);
 		else
-			ft_printf("Correct\n");
+		{
+			int i;
+
+			i = 1;
+			t_list *tmp = stack_a(ac,av);
+			while(tmp)
+			{
+				printf("node%d : %d\n",i++,*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			ft_lstclear(&tmp, free);
+		}
 	}
 	return (0);
 }
+
+// burada basit kontrol var
+	// ac 2'den büyükse check args ile kontrol et
+	// check args not integer ile bütün argümanların integer olup 
+	// olmadığına bakıyor
+	// check atoi de integer sınırlarında olup olmadığına bakıyor
+	// kontrollerden geçerse return 1 geçemez ise 0
+
+	// if (ac >= 2)
+	// {
+	// 	if (!check_args(ac, av))
+	// 		write(2, "Error\n", 6);
+	// 	else
+	// 		ft_printf("Correct\n");
+	// }
+
+
+	// basit bir liste ekleme ve yazdırma
+	// t_list *lst;
+	// t_list *node1;
+	// t_list *node2;
+	// t_list *node3;
+
+	// int a = 1;
+	// int b = 2;
+	// int c = 3;
+
+	// node1 = ft_lstnew(&a);
+	// node2 = ft_lstnew(&b);
+	// node3 = ft_lstnew(&c);
+	
+	// lst = node1;
+	// ft_lstadd_back(&lst,node2);
+	// ft_lstadd_back(&lst,node3);;
+
+	// int i = 1;
+	// t_list *tmp = lst;
+	// while(tmp)
+	// {
+	// 	printf("node%d : %d\n",i++,*(int *)(tmp->content));
+	// 	tmp = tmp->next;
+	// }
