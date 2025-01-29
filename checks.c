@@ -6,11 +6,33 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:53:10 by musisman          #+#    #+#             */
-/*   Updated: 2025/01/28 20:29:53 by musisman         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:47:14 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// static int is_array(int ac, char **av)
+// {
+// 	if (ac == 2)
+
+// 	else
+// 	{
+// 		int i;
+// 		int len;
+
+// 		i = 1;
+// 		while (av[++i])
+// 		{
+// 			len = ft_strlen(ft_split(av[i], 32))
+// 			if (len > )
+// 		}
+		
+// 		if (av[2])
+// 	}
+
+// 	return (1);
+// }
 
 static int	not_integer(char *s)
 {	
