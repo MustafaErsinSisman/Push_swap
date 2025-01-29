@@ -23,7 +23,10 @@
 
 int		check_args(int ac, char **av);
 t_list	*stack_a(int ac, char **av);
-void	*pa(t_list **a, t_list **b);
-void	*pb(t_list **a, t_list **b);
+void	sa(t_list **a);
+void	sb(t_list **b);
+void	ss(t_list **a, t_list **b);
+void	pa(t_list **a, t_list **b);
+void	pb(t_list **a, t_list **b);
 
 #endif

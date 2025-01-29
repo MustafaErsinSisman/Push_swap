@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 				printf("%d\n",*(int *)(tmp->content));
 				tmp = tmp->next;
 			}
+
 			pb(&a,&b);
 			printf("\nİlk pb sonrası:\n\nA stack:\n");
 			tmp = a;
@@ -47,6 +48,23 @@ int	main(int ac, char **av)
 				printf("%d\n",*(int *)(tmp->content));
 				tmp = tmp->next;
 			}
+
+			pb(&a,&b);
+			printf("\nİlk pb sonrası:\n\nA stack:\n");
+			tmp = a;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			printf("\nB stack:\n");
+			tmp = b;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+
 			pb(&a,&b);
 			printf("\nİkinci pb sonrası:\n\nA stack:\n");
 			tmp = a;
@@ -56,6 +74,23 @@ int	main(int ac, char **av)
 				tmp = tmp->next;
 			}
 			printf("\nB stack:\n");
+			tmp = b;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			
+
+			ss(&a,&b);
+			printf("\nss sonrası:\n\nA stack:\n");
+			tmp = a;
+			while(tmp)
+			{
+				printf("%d\n",*(int *)(tmp->content));
+				tmp = tmp->next;
+			}
+			printf("\nss sonrası:\n\nB stack:\n");
 			tmp = b;
 			while(tmp)
 			{
