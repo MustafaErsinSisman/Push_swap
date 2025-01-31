@@ -1,24 +1,21 @@
 
 NAME 		= push_swap
 BONUS		= checker
-CC			= gcc
-FLAGS 		= -Wall -Wextra -Werror
+CC			= cc
+FLAGS 		= -Wall -Wextra -Werror -g
 SRCS		= push_swap.c stacks.c switch.c \
 		  checks.c rotate.c rrotate.c
 
-OBJS		:= $(SRCS:.c=.o)
-
-AR_LIBFT	= libft/libft.a
+LIBFT	= libft/libft.a
 DIR_LIBFT	= libft
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(SRCS)
 	make -C $(DIR_LIBFT) -s
-	$(CC) $(FLAGS) $(OBJS) $(AR_LIBFT) -o $(NAME)
+	$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 clean:
-	rm -f $(OBJS) $(OBJS_BNS)
 	make -s -C $(DIR_LIBFT) clean
 
 fclean: clean
