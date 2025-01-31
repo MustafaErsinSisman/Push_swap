@@ -19,21 +19,7 @@ int	main(int ac, char **av)
 		if (!check_args(ac, av))
 			write(2, "Error\n", 6);
 		else
-		{
-			int i = 1;
-			int len = 0;
-			while (av[++i])
-			{
-				int j;
-				char **s = ft_split(av[i], 32);
-				while ()
-				{
-				}
-				
-				printf("%d ", len);
-			}
-			
-		}
+                        ft_printf("Correct\n");
 	
 	}
 	return (0);
