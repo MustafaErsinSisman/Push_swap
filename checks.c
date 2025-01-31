@@ -3,49 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:53:10 by musisman          #+#    #+#             */
-/*   Updated: 2025/01/29 18:47:14 by musisman         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:12:58 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// static int is_array(int ac, char **av)
-// {
-// 	if (ac == 2)
+static int is_array(int ac, char **av)
+{
 
-// 	else
-// 	{
-// 		int i;
-// 		int len;
-
-// 		i = 1;
-// 		while (av[++i])
-// 		{
-// 			len = ft_strlen(ft_split(av[i], 32))
-// 			if (len > )
-// 		}
-		
-// 		if (av[2])
-// 	}
-
-// 	return (1);
-// }
-
-static int	not_integer(char *s)
-{	
-	int	i;
-
-	if (!s)
-		return (0);
-	i = -1;
-	if (s[i + 1] == '-' || s[i + 1] == '+')
-		i++;
-	while (s[++i])
-		if (s[i] < '0' || s[i] > '9')
-			return (0);
 	return (1);
 }
 
@@ -107,12 +76,8 @@ int	check_args(int ac, char **av)
 
 	len = ac;
 	while (--ac > 0)
-	{
-		if (!not_integer(av[ac]))
-			return (0);
 		if (!check_atoi(av[ac], &value))
 			return (0);
-	}
 	if (same(len, av))
 		return (0);
 	return (1);
