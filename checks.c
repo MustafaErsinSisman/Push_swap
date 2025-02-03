@@ -6,7 +6,7 @@
 /*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:53:10 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/03 17:56:28 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:05:28 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,14 @@ static int	is_array(int ac, char **av)
 	return (1);
 }
 
-void	check_args(int ac, char **av)
+int	check_args(int ac, char **av)
 {
 	long	value;
 	int		len;
 	int		i;
-	int		check;
 
-	check = 1;
 	if (!is_array(ac, av))
-		check = 0;
+		return (0);
 	len = 0;
 	while (++len < ac && ac > 2)
 	{
@@ -121,14 +119,13 @@ void	check_args(int ac, char **av)
 		while (av[len][i])
 		{
 			if (av[len][i] == ' ')
-				check = 0;
+				return (0);
 			i++;
 		}
 		if (!check_atoi(av[len], &value))
-			check = 0;
+			return (0);
 	}
 	if (!same(ac, av) && ac > 2)
-		check = 0;
-	if (check == 0)
-		write(2, "Error\n", 6);
+		return (0);
+	return (1);
 }

@@ -21,8 +21,24 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-void	check_args(int ac, char **av);
+typedef struct s_stacks
+{
+	char	**args;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		count_a;
+	int		count_b;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+}			t_stacks;
+
+int	check_args(int ac, char **av);
 t_list	*stack_a(int ac, char **av);
+int	turk_algorithm(t_list *a, t_list *b);
 void	sa(t_list **a);
 void	sb(t_list **b);
 void	ss(t_list **a, t_list **b);
