@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-int		check_args(int ac, char **av);
+void	check_args(int ac, char **av);
 t_list	*stack_a(int ac, char **av);
 void	sa(t_list **a);
 void	sb(t_list **b);
