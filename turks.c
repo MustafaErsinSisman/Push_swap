@@ -39,25 +39,25 @@ int turk_algorithm(t_list *a, t_list *b)
                 ra(&a);
         }
         else if (len == 3)
-        {
-            int i = 0;
-            int max;
-            t_list *tmp = a;
+{
+    int first = *(int *)(a->content);
+    int second = *(int *)(a->next->content);
+    int third = *(int *)(a->next->next->content);
 
-            while (tmp->next)
-            {
-                i = 0;
-                while (i< len)
-                {
-                        if (*(int *)(tmp->content) > *(int *)(a->next->content))
-                                
-                        i++;  
-                }
-                len--;
-                tmp = tmp->next;
-            }
-            
-        }     
+    // Sıralama koşulları
+    if (first > second && first > third)
+        ra(&a);
+    if (*(int *)(a->content) > *(int *)(a->next->content))
+        sa(&a);  // Swap işlemi
+
+    // Tekrar kontrol ve son adım
+    if (*(int *)(a->next->content) > *(int *)(a->next->next->content))
+    {
+        rra(&a);  // Reverse rotate işlemi
+        if (*(int *)(a->content) > *(int *)(a->next->content))
+            sa(&a);  // Swap tekrar gerekebilir
+    }
+}   
         write_stack(a);
         write_stack(b);
 	ft_lstclear(&a, free);
