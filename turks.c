@@ -12,54 +12,100 @@
 
 #include "push_swap.h"
 
-void write_stack(t_list *a)
+// void write_stack(t_list *a, t_list *b)
+// {
+//     t_list *tmp_a = a;
+//     t_list *tmp_b = b;
+
+//     ft_printf("\n --------------       --------------\n|   Stack A:   |     |   Stack B:   |\n");
+//     ft_printf(" --------------       --------------\n");
+//     while (tmp_a || tmp_b)
+//     {
+//         if (tmp_a)
+//         {
+//             printf("|      %d       |", *(int *)(tmp_a->content));
+//             tmp_a = tmp_a->next;
+//         }
+//         else
+//             printf("|              |");
+//         printf("     ");
+//         if (tmp_b)
+//         {
+//             printf("|      %d       |", *(int *)(tmp_b->content));
+//             tmp_b = tmp_b->next;
+//         }
+//         else
+//             printf("|              |");
+//         printf("\n");
+//     }
+//     ft_printf(" --------------       --------------\n\n");
+// }
+
+void write_stack(t_list *a, t_list *b)
 {
-        t_list *tmp;
-        
-        tmp = a;
-	printf("-----------------\n");
-	while(tmp)
-	{
-		printf("%d\n",*(int *)(tmp->content));
-		tmp = tmp->next;
-	}
-	printf("-----------------\n");
+    int len_a = ft_lstsize(a);
+    int len_b = ft_lstsize(b);
+    int max_height = (len_a > len_b) ? len_a : len_b;
+
+    printf("\n ---------      --------------\n");
+    printf("| StackA: |      |  Stack B:   |\n");
+    printf(" ---------      --------------\n");
+
+    for (int i = 0; i < max_height; i++)
+    {
+        // Stack A'nın elemanlarını yukarıdan aşağı yazdır
+        printf("|");
+        if (i < len_a)
+        {
+            printf("    %d    |", *(int *)(a->content));
+            a = a->next;
+        }
+        else
+            printf("             |");
+
+        printf("     |");
+
+        // Stack B'nin elemanlarını alttan yukarıya yazdır
+        if (i >= max_height - len_b)
+        {
+            t_list *tmp = b;
+            for (int j = 0; j < (max_height - i - 1); j++)
+                tmp = tmp->next;
+            printf("    %d    |\n", *(int *)(tmp->content));
+        }
+        else
+            printf("            |\n");
+    }
+
+    printf(" ---------     --------------\n");
 }
+
+
+
+// int action_number(t_list  *a, t_list *b)
+// {
+//         t_stacks actions;
+
+//         actions.stack_a = a;
+//         actions.stack_b = b;
+
+// }
 
 int turk_algorithm(t_list *a, t_list *b)
 {
-        int len;
+        // int len;
 
-        len = ft_lstsize(a);
-       if (len == 1)
-        return (1);
-        else if (len == 2)
-        {
-            if (*(int *)(a->content) > *(int *)(a->next->content))
-                ra(&a);
-        }
-        else if (len == 3)
-{
-    int first = *(int *)(a->content);
-    int second = *(int *)(a->next->content);
-    int third = *(int *)(a->next->next->content);
+        // len = ft_lstsize(a);
 
-    // Sıralama koşulları
-    if (first > second && first > third)
-        ra(&a);
-    if (*(int *)(a->content) > *(int *)(a->next->content))
-        sa(&a);  // Swap işlemi
+        printf("ilk durum\n");
+        write_stack(a, b);
+        pb(&a, &b);
+        printf("pb yapıldı\n");
+        write_stack(a, b);
+        pb(&a, &b);
+        printf("pb yapıldı\n");
+        write_stack(a, b);
 
-    // Tekrar kontrol ve son adım
-    if (*(int *)(a->next->content) > *(int *)(a->next->next->content))
-    {
-        rra(&a);  // Reverse rotate işlemi
-        if (*(int *)(a->content) > *(int *)(a->next->content))
-            sa(&a);  // Swap tekrar gerekebilir
-    }
-}   
-        write_stack(a);
-        write_stack(b);
 	ft_lstclear(&a, free);
 	ft_lstclear(&b, free);
         return  (1);
