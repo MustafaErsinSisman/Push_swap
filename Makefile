@@ -14,7 +14,7 @@ all: $(NAME)
 
 $(NAME): $(SRCS)
 	make -C $(DIR_LIBFT) -s
-	$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME) -lm
 
 clean:
 	make -s -C $(DIR_LIBFT) clean

@@ -23,7 +23,6 @@
 
 typedef struct s_stacks
 {
-	// char	**args; benim işime yaramaz  galiba
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		count_a;
@@ -35,6 +34,19 @@ typedef struct s_stacks
 	int		rrb;
 	int		rrr;
 }			t_stacks;
+
+typedef struct s_move
+{
+    int ra;
+    int rb;
+    int rr;
+    int rra;
+    int rrb;
+    int rrr;
+    int total_moves;
+}   t_move;
+
+
 
 int		check_args(int ac, char **av);
 t_list	*stack_a(int ac, char **av);
