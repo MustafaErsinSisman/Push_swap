@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 				exit(0);
 			}
             		turk_algorithm(stacks);
+			free_stacks(stacks);
         	}
 	}
 	return (0);

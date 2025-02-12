@@ -23,7 +23,6 @@
 
 typedef struct s_stacks
 {
-	// char	**args;
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		count_a;
@@ -39,6 +38,9 @@ typedef struct s_stacks
 
 
 void error_text(void);
+void	error(t_stacks *stacks);
+void	free_split(char **s);
+void	free_stacks(t_stacks *stacks);
 int		check_args(int ac, char **av);
 t_list	*stack_a(int ac, char **av);
 int		turk_algorithm(t_stacks *stacks);

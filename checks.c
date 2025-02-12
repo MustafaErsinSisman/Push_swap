@@ -6,13 +6,13 @@
 /*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:53:10 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/03 19:05:28 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:31:28 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_split(char **s)
+void	free_split(char **s)
 {
 	int	i;
 
