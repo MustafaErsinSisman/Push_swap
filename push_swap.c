@@ -17,12 +17,17 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		if (!check_args(ac, av))
-            			ft_putstr_fd("Error\n", 2);
+			error_text();
         	else
         	{
-			t_stacks *stacks;
-			
-			fill_stacks(stacks);
+			t_stacks	*stacks;
+
+			stacks = fill_stacks(ac, av);
+			if (ac < 2)
+			{
+				free(stacks);
+				exit(0);
+			}
             		turk_algorithm(stacks);
         	}
 	}

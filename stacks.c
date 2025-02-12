@@ -35,16 +35,22 @@ t_list	*stack_a(int ac, char **av)
 	return (a);
 }
 
-void fill_stacks(t_stacks *stacks)
+t_stacks *fill_stacks(int ac, char **av)
 {
+	t_stacks	*stacks;
+
+	stacks = (t_stacks *)malloc(sizeof(t_stacks));
+	if (stacks == NULL)
+		error_text();
         stacks->stack_a =stack_a(ac, av);
 	stacks->stack_b = NULL;
-	stacks->count_a = ft_lstsize(a);
-	stacks->count_b = ft_lstsize(b);
+	stacks->count_a = ft_lstsize(stacks->stack_a);
+	stacks->count_b = ft_lstsize(stacks->stack_b);
 	stacks->ra = 0;
 	stacks->rb = 0;
 	stacks->rr = 0;
 	stacks->rra = 0;
 	stacks->rrb = 0;
 	stacks->rrr = 0;
+	return (stacks);
 }

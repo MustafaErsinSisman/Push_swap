@@ -5,7 +5,7 @@ CC			= cc
 FLAGS 		= -Wall -Wextra -Werror -g
 SRCS		= push_swap.c stacks.c switch.c \
 		  checks.c rotate.c rrotate.c \
-		  turks.c \
+		  turks.c error.c actions.c\
 
 LIBFT	= libft/libft.a
 DIR_LIBFT	= libft
@@ -14,7 +14,7 @@ all: $(NAME)
 
 $(NAME): $(SRCS)
 	make -C $(DIR_LIBFT) -s
-	$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME) -lm
+	$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 clean:
 	make -s -C $(DIR_LIBFT) clean

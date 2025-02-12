@@ -38,11 +38,11 @@ typedef struct s_stacks
 
 
 
-
+void error_text(void);
 int		check_args(int ac, char **av);
 t_list	*stack_a(int ac, char **av);
 int		turk_algorithm(t_stacks *stacks);
-void	fill_stacks(t_stacks *stacks)
+t_stacks	*fill_stacks(int ac, char **av);
 void	sa(t_list **a);
 void	sb(t_list **b);
 void	ss(t_list **a, t_list **b);
@@ -54,6 +54,6 @@ void	rr(t_list **a, t_list **b);
 void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
-void	actons(t_list *a, t_list *b, char *str)
+void	actons(t_list *a, t_list *b, char *str);
 
 #endif
