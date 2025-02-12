@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks.c                                           :+:      :+:    :+:   */
+/*   fill_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 17:49:09 by musisman          #+#    #+#             */
-/*   Updated: 2025/01/28 22:01:48 by musisman         ###   ########.fr       */
+/*   Created: 2025/02/12 05:26:04 by musisman          #+#    #+#             */
+/*   Updated: 2025/02/12 05:26:04 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,18 @@ t_list	*stack_a(int ac, char **av)
 		i++;
 	}
 	return (a);
+}
+
+void fill_stacks(t_stacks *stacks)
+{
+        stacks->stack_a =stack_a(ac, av);
+	stacks->stack_b = NULL;
+	stacks->count_a = ft_lstsize(a);
+	stacks->count_b = ft_lstsize(b);
+	stacks->ra = 0;
+	stacks->rb = 0;
+	stacks->rr = 0;
+	stacks->rra = 0;
+	stacks->rrb = 0;
+	stacks->rrr = 0;
 }
