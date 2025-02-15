@@ -151,13 +151,14 @@ void write_stack(t_stacks *stacks)
 
 int turk_algorithm(t_stacks *stacks)
 {
-        // sıralımı bak
-            // sıralıysa exit
-        // değilse 2 argüman mı
-            // evetse sa
+
+    is_sort(stacks);
+    is_two_node(stacks);
         // değilse 3 argüman mı bak
             // evetse ona göre sırala
+            is_three_node(stacks);
         // değilse ona göre sırala"
-
+            so_sort_time(stacks);
+            write_stack(stacks);
         return  (1);
 }

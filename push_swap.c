@@ -23,11 +23,6 @@ int	main(int ac, char **av)
 			t_stacks	*stacks;
 
 			stacks = fill_stacks(ac, av);
-			if (ac < 2)
-			{
-				free(stacks);
-				exit(0);
-			}
             		turk_algorithm(stacks);
 			free_stacks(stacks);
         	}

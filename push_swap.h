@@ -56,6 +56,11 @@ void	rr(t_stacks *stacks);
 void	rra(t_stacks *stacks);
 void	rrb(t_stacks *stacks);
 void	rrr(t_stacks *stacks);
-void	actons(t_stacks *stacks, char *str);
+void is_sort(t_stacks *stacks);
+void is_two_node(t_stacks *stacks);
+void is_three_node(t_stacks *stacks);
+void so_sort_time(t_stacks *stacks);
+void	actions(t_stacks *stacks, char *str);
+void write_stack(t_stacks *stacks);
 
 #endif

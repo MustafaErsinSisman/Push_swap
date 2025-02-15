@@ -6,13 +6,13 @@
 /*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:49:09 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/15 04:55:24 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/15 06:12:13 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void actons(t_stacks *stacks, char *str)
+void actions(t_stacks *stacks, char *str)
 {
 	if (ft_strncmp("sa", str, 2))
 		sa(stacks);
