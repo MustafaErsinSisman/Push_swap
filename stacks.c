@@ -61,7 +61,6 @@ t_list *not_array(int ac, char **av)
         	    return (free(value), ft_lstclear(&a, free), NULL);
 		ft_lstadd_back(&a, node);
 	}
-	free(value);
 	return (a);
 }
 

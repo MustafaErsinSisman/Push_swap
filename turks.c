@@ -12,14 +12,16 @@
 
 #include "push_swap.h"
 
-void write_stack(t_list *a, t_list *b)
+void write_stack(t_stacks *stacks)
 {
-    t_list *tmp_a = a;
-    t_list *tmp_b = b;
+    t_list *tmp_a = stacks->stack_a;
+    t_list *tmp_b = stacks->stack_b;
 
-    ft_printf("\n ---------     ---------\n| StackA: |   | StackB: |\n");
+    ft_printf("\n ---------     ---------\n");
+    ft_printf("| StackA: |   | StackB: |\n");
     ft_printf(" ---------     ---------\n");
-    while (tmp_a || tmp_b)
+    int max_count = (stacks->count_a > stacks->count_b) ? stacks->count_a : stacks->count_b;
+    for (int i = 0; i < max_count; i++)
     {
         if (tmp_a)
         {
@@ -40,6 +42,7 @@ void write_stack(t_list *a, t_list *b)
     }
     ft_printf(" ---------     ---------\n");
 }
+
 
 // int get_position_in_a(t_list *a, int value)
 // {
@@ -154,55 +157,7 @@ int turk_algorithm(t_stacks *stacks)
             // evetse sa
         // değilse 3 argüman mı bak
             // evetse ona göre sırala
-        // değilse ona göre sırala
-        t_list *a=stacks->stack_a;
-        t_list *b = stacks->stack_b;
-        write_stack(a, b);
-        pb(&a, &b);
-        pb(&a, &b);
-        write_stack(a, b);
+        // değilse ona göre sırala"
 
-	    
         return  (1);
 }
-//doğru sıralama
-
-//5 1 7 2 4 3 9 0 6 8
-        // write_stack(a, b);
-        // pb(&a, &b);
-        // pb(&a, &b);
-        // write_stack(a, b);
-        // rb(&b);// 7
-        // pb(&a, &b);
-        // write_stack(a, b);
-        // rrb(&b);// 2
-        // pb(&a, &b);
-        // write_stack(a, b);
-        // pb(&a, &b); // 4
-        // write_stack(a, b);
-        // rb(&b);// 3
-        // pb(&a, &b);
-        // write_stack(a, b);
-        // rrr(&a, &b); // 6
-        // rrb(&b);
-        // pb(&a, &b);
-        // write_stack(a, b);
-        // ra(&a);// a sırala 3 tane kaldığı için
-        // rrb(&b);// b sıralanamalı son hali büyükten küçüğe olmalı
-        // ra(&a);// b atmak için 0 aşağı aldık
-        // pa(&a, &b);// b atmaya başlandı
-        // write_stack(a, b);
-        // pa(&a, &b);
-        // write_stack(a, b);
-        // pa(&a, &b);
-        // write_stack(a, b);
-        // pa(&a, &b);
-        // write_stack(a, b);
-        // pa(&a, &b);
-        // write_stack(a, b);
-        // pa(&a, &b);
-        // write_stack(a, b);
-        // pa(&a, &b);
-        // write_stack(a, b);
-        // rra(&a);// 0 aşağıda kaldı yukarı aldık
-        // write_stack(a, b);

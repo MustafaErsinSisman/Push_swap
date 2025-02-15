@@ -6,66 +6,73 @@
 /*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:46:09 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/03 17:08:37 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/15 05:20:13 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_list **a)
+void	sa(t_stacks *stacks)
 {
 	t_list	*first;
 	t_list	*second;
 
-	if (!a || !*a || !(*a)->next)
+	if (!stacks || !stacks->stack_a || !(stacks->stack_a->next))
 		return ;
-	first = *a;
-	second = (*a)->next;
+	first = stacks->stack_a;
+	second = stacks->stack_a->next;
 	first->next = second->next;
 	second->next = first;
-	*a = second;
+	stacks->stack_a = second;
 }
 
-void	sb(t_list **b)
+void	sb(t_stacks *stacks)
 {
 	t_list	*first;
 	t_list	*second;
 
-	if (!b || !*b || !(*b)->next)
+	if (!stacks || !stacks->stack_b || !(stacks->stack_b->next))
 		return ;
-	first = *b;
-	second = (*b)->next;
+	first = stacks->stack_b;
+	second = stacks->stack_b->next;
 	first->next = second->next;
 	second->next = first;
-	*b = second;
+	stacks->stack_b = second;
 }
 
-void	ss(t_list **a, t_list **b)
+void	ss(t_stacks *stacks)
 {
-	sa(a);
-	sb(b);
+	if ((!stacks || !stacks->stack_a || !(stacks->stack_a->next)) &&
+		(!stacks || !stacks->stack_b || !(stacks->stack_b->next)))
+		return ;
+	sa(stacks);
+	sb(stacks);
 }
 
-void	pa(t_list **a, t_list **b)
+void	pa(t_stacks *stacks)
 {
 	t_list	*tmp;
 
-	if (!b || !*b)
+	if (!stacks->stack_b)
 		return ;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = *a;
-	*a = tmp;
+	tmp = stacks->stack_b; 
+	stacks->stack_b = stacks->stack_b->next;
+	tmp->next = stacks->stack_a;
+	stacks->stack_a = tmp;
+	stacks->count_a++;
+	stacks->count_b--;
 }
 
-void	pb(t_list **a, t_list **b)
+void	pb(t_stacks *stacks)
 {
 	t_list	*tmp;
 
-	if (!a || !*a)
+	if (!stacks->stack_a)
 		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = *b;
-	*b = tmp;
+	tmp = stacks->stack_a;
+	stacks->stack_a = stacks->stack_a->next;
+	tmp->next = stacks->stack_b;
+	stacks->stack_b = tmp;
+	stacks->count_a--;
+	stacks->count_b++;
 }
