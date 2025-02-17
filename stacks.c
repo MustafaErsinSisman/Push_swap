@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-t_list *array(char **av)
+t_list	*array(char **av)
 {
-	char **s;
-	t_list *a;
-	t_list *node;
-	int i;
-	int *value;
+	char	**s;
+	t_list	*a;
+	t_list	*node;
+	int		i;
+	int		*value;
 
 	i = 0;
 	node = NULL;
@@ -34,13 +34,14 @@ t_list *array(char **av)
 		*value = ft_atoi(s[i++]);
 		node = ft_lstnew(value);
 		if (!node)
-			return (free(value), ft_lstclear(&a, free), free_split(s),NULL);
+			return (free(value), ft_lstclear(&a, free), free_split(s), NULL);
 		ft_lstadd_back(&a, node);
 	}
 	free_split(s);
-	return(a);
+	return (a);
 }
-t_list *not_array(int ac, char **av)
+
+t_list	*not_array(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*node;
@@ -58,7 +59,7 @@ t_list *not_array(int ac, char **av)
 		*value = ft_atoi(av[i]);
 		node = ft_lstnew(value);
 		if (!node)
-        	    return (free(value), ft_lstclear(&a, free), NULL);
+			return (free(value), ft_lstclear(&a, free), NULL);
 		ft_lstadd_back(&a, node);
 	}
 	return (a);
@@ -69,25 +70,24 @@ t_list	*stack_a(int ac, char **av)
 	t_list	*a;
 
 	if (ac == 2)
-        	a = array(av);
-    	else
-        	a = not_array(ac, av);
-
-   	if (!a)
-        	ft_lstclear(&a, free);
+		a = array(av);
+	else
+		a = not_array(ac, av);
+	if (!a)
+		ft_lstclear(&a, free);
 	return (a);
 }
 
-t_stacks *fill_stacks(int ac, char **av)
+t_stacks	*fill_stacks(int ac, char **av)
 {
 	t_stacks	*stacks;
 
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (stacks == NULL)
 		return (NULL);
-        stacks->stack_a =stack_a(ac, av);
+	stacks->stack_a = stack_a(ac, av);
 	if (!stacks->stack_a)
-        	return (free(stacks), NULL);
+		return (free(stacks), NULL);
 	stacks->stack_b = NULL;
 	stacks->count_a = ft_lstsize(stacks->stack_a);
 	stacks->count_b = ft_lstsize(stacks->stack_b);

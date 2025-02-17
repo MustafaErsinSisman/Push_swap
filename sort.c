@@ -35,17 +35,13 @@ void is_sort(t_stacks *stacks)
 
 void is_two_node(t_stacks *stacks)
 {
-    // Eğer stack A'nın uzunluğu 2 ise
     if (stacks->count_a == 2)
     {
-        // stack A boş değilse ve stack A'nın bir sonraki elemanı varsa
         if (stacks->stack_a && stacks->stack_a->next)
         {
-            // Eğer ilk eleman ikinci elemandan büyükse, sa işlemi yap
             if (*(int *)stacks->stack_a->content > *(int *)stacks->stack_a->next->content)
             {
                 actions(stacks, "sa");
-                write_stack(stacks);
                 free_stacks(stacks);
                 exit(0);
             }
@@ -55,9 +51,28 @@ void is_two_node(t_stacks *stacks)
 
 void is_three_node(t_stacks *stacks)
 {
-        write_stack(stacks);
+    t_list *tmp;
+    
+    if (stacks->count_a == 3)
+    {
+        tmp = stacks->stack_a;
+        if (*(int *)tmp->content > *(int *)tmp->next->content)
+        {
+            if (*(int *)tmp->content > *(int *)tmp->next->next->content)
+                actions(stacks, "ra");
+            else
+                actions(stacks, "sa");
+        }
+        else
+                actions(stacks, "rra");
+        is_sort(stacks);
+        actions(stacks, "sa");
+        free_stacks(stacks);
+        exit(0);
+    }
 }
 void so_sort_time(t_stacks *stacks)
 {
-        write_stack(stacks);
+    actions(stacks, "rra");
+    write_stack(stacks);
 }
