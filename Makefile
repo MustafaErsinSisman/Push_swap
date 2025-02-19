@@ -5,7 +5,8 @@ CC			= cc
 FLAGS 		= -Wall -Wextra -Werror -g
 SRCS		= push_swap.c stacks.c switch.c \
 		  checks.c rotate.c rrotate.c \
-		  turks.c error.c actions.c sort.c\
+		  turks.c error.c actions.c sort.c \
+		  index.c numberofchosen.c\
 
 LIBFT	= libft/libft.a
 DIR_LIBFT	= libft

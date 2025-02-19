@@ -155,6 +155,5 @@ int turk_algorithm(t_stacks *stacks)
     is_two_node(stacks);
     is_three_node(stacks);
     so_sort_time(stacks);
-    write_stack(stacks);
     return  (1);
 }

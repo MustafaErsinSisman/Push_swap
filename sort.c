@@ -79,10 +79,8 @@ void so_sort_time(t_stacks *stacks)
     actions(stacks, "pb");
     while (ft_lstsize(stacks->stack_a) > 3)
     {
-        chose_number = (stacks);
+        chose_number = chosen_number(stacks);
         chosen_number_actions(stacks, chose_number);
+        actions(stacks, "pb");
     }
-    
-    // hamle sayısı bul en az olan sayıyı bul
-    // bulunan sayının uygun hamlelerini yap
 }
