@@ -44,19 +44,11 @@ void same_block_up(t_stacks *stacks, int index_a, int index_b)
         {
                 stacks->rr = index_b;
                 stacks->ra = index_a - index_b;
-                stacks->rb = 0;
-                stacks->rra = 0;
-                stacks->rrb = 0;
-                stacks->rrr = 0;
         }
         else
         {
                 stacks->rb = index_b - index_a;
 	        stacks->rr = index_a;
-                stacks->ra = 0;
-                stacks->rra = 0;
-                stacks->rrb = 0;
-                stacks->rrr = 0;
         }
 
 }
@@ -65,26 +57,24 @@ void same_block_down(t_stacks *stacks, int index_a, int index_b)
 {
 	if (index_a > index_b)
         {
-                stacks->ra = 0;
-                stacks->rb = 0;
-                stacks->rr = 0;
                 stacks->rrr = index_b;
                 stacks->rra = index_a -index_b;
-                stacks->rrb = 0;
         }
         else
         {
-                stacks->ra = 0;
-                stacks->rb = 0;
-                stacks->rr = 0;
                 stacks->rrr = index_a;
                 stacks->rrb = index_b - index_a;
-                stacks->rra = 0;
         }
 }
 
 int	move_number(t_stacks *stacks, int index_a, int index_b)
-{	
+{
+        stacks->ra = 0;
+        stacks->rb = 0;
+        stacks->rr = 0;
+        stacks->rra = 0;
+        stacks->rrb = 0;
+        stacks->rrr = 0;	
 	if (stacks->count_a / 2 >= index_a && stacks->count_b / 2 >= index_b) //+ +
 		same_block_up(stacks, index_a, index_b);
 	else if (stacks->count_a / 2 <= index_a && stacks->count_b / 2 >= index_b) //- +
@@ -122,7 +112,7 @@ int chosen_index(t_stacks *stacks, int chose_move, int chose_index)
                 printf("indexb: %d\n", index_b);
                 move = move_number(stacks, index_a, index_b);
                 printf("move: %d\n", move);
-                if (move < chose_move && index_a < chose_index)
+                if (move < chose_move || (move == chose_move && index_a < chose_index))
                 {
                         chose_index = index_a;
                         chose_move = move;
@@ -141,14 +131,16 @@ int chosen_number(t_stacks *stacks)
         t_list *a_stack;
         int pos;
         int chose_number;
+        int index;
 
         pos = 0;
+        index = chosen_index(stacks, 5500, 500);
         chose_number = -2147483648;
         a_stack = stacks->stack_a;
-        while (a_stack->next)
+        while (a_stack)
         {
                 printf("pos in chosen number: %d\n\n", pos);
-                if (pos == chosen_index(stacks, 5500, 500))
+                if (pos == index)
                 {
                         chose_number = *(int *)a_stack->content;
                         printf("chose number in chosen number: %d\n\n", chose_number);
