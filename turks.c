@@ -151,7 +151,11 @@ void write_stack(t_stacks *stacks)
 
 int turk_algorithm(t_stacks *stacks)
 {
-    is_sort(stacks);
+    if (is_sort(stacks->stack_a) == -1)
+    {
+        free_stacks(stacks);
+        exit(0);
+    }
     is_two_node(stacks);
     is_three_node(stacks);
     so_sort_time(stacks);

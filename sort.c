@@ -11,26 +11,29 @@
 /* ************************************************************************** */
 
 #include  "push_swap.h"
-void is_sort(t_stacks *stacks)
+int is_sort(t_list *stack)
 {
     t_list *tmp;
 
-    if (!stacks || !stacks->stack_a)
-        return ;
-    tmp = stacks->stack_a;
+    if (!stack)
+        return (0);
+    tmp = stack;
     if (!tmp->next)
-    {
-        free_stacks(stacks);
-        exit(0);        
-    }
+        return (-1);
     while (tmp->next)
     {
         if (*(int *)tmp->content > *(int *)tmp->next->content)
-            return;
+            return (1);
         tmp = tmp->next;
     }
-    free_stacks(stacks);
-    exit(0);
+    tmp = stack;
+    while (tmp->next)
+    {
+        if (*(int *)tmp->content < *(int *)tmp->next->content)
+            return (-1);
+        tmp = tmp->next;
+    }
+    return (0);
 }
 
 void is_two_node(t_stacks *stacks)
@@ -65,10 +68,13 @@ void is_three_node(t_stacks *stacks)
         }
         else
                 actions(stacks, "rra");
-        is_sort(stacks);
+        is_sort(stacks->stack_a);
         actions(stacks, "sa");
-        free_stacks(stacks);
-        exit(0);
+        if (stacks->count_b == 0)
+        {
+            free_stacks(stacks);
+            exit(0);
+        }
     }
 }
 void so_sort_time(t_stacks *stacks)
@@ -83,6 +89,13 @@ void so_sort_time(t_stacks *stacks)
         chosen_number_actions(stacks, chose_number);
         actions(stacks, "pb");
     }
-    printf("köprüden önce son çıkış\n");
+    if (!is_sort(stacks->stack_b))
+    {
+        // if count b %2 = 0 &&      if (count b / 2 < indis(max sayı))   (indis) kere rb         else (count b - indis) kere rrb 
+        // else if count b %2 = 1 &&  if (count b / 2 <= indis(max sayı))  (indis) kere rb     else  (count b - indis) kere rrb
+    }
+    if (is_sort(stacks->stack_a))
+        is_three_node(stacks);
+    // sonra a'ya at
     write_stack(stacks);
 }
