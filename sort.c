@@ -83,4 +83,6 @@ void so_sort_time(t_stacks *stacks)
         chosen_number_actions(stacks, chose_number);
         actions(stacks, "pb");
     }
+    printf("köprüden önce son çıkış\n");
+    write_stack(stacks);
 }
