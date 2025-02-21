@@ -46,6 +46,7 @@ t_list	*stack_a(int ac, char **av);
 int		turk_algorithm(t_stacks *stacks);
 t_stacks	*fill_stacks(int ac, char **av);
 int pos(t_list *stack, int number);
+int chose_number_b(t_stacks *stacks, int a_number);
 int chosen_number(t_stacks *stacks);
 void chosen_number_actions(t_stacks *stacks, int chose_number);
 void	sa(t_stacks *stacks);

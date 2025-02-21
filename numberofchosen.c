@@ -75,19 +75,19 @@ int	move_number(t_stacks *stacks, int index_a, int index_b)
         stacks->rra = 0;
         stacks->rrb = 0;
         stacks->rrr = 0;	
-	if (stacks->count_a / 2 >= index_a && stacks->count_b / 2 >= index_b) //+ +
-		same_block_up(stacks, index_a, index_b);
-	else if (stacks->count_a / 2 <= index_a && stacks->count_b / 2 >= index_b) //- +
+	if (((stacks->count_a / 2) + (stacks->count_a % 2)) >= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) >= index_b)
+        		same_block_up(stacks, index_a, index_b);
+	else if (((stacks->count_a / 2) + (stacks->count_a % 2)) <= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) >= index_b)
         { 
 		stacks->rra = stacks->count_a - index_a; 
                 stacks->rb = index_b;
         }
-	else if (stacks->count_a / 2 >= index_a && stacks->count_b / 2 <= index_b)//+ -
+	else if (((stacks->count_a / 2) + (stacks->count_a % 2)) >= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) <= index_b)
         {
 		stacks->rrb = stacks->count_b - index_b;
                 stacks->ra = index_a;
         }
-	else if (stacks->count_a / 2 <= index_a && stacks->count_b / 2 <= index_b) //- -
+	else if (((stacks->count_a / 2) + (stacks->count_a % 2)) <= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) <= index_b)
 		same_block_down(stacks, index_a, index_b);
 	return (stacks->ra + stacks->rb + stacks->rr + stacks->rra + stacks->rrb + stacks->rrr);
 }
@@ -103,26 +103,17 @@ int chosen_index(t_stacks *stacks, int chose_move, int chose_index)
         a_stack = stacks->stack_a;
         while (a_stack)
         {
-                printf("kontrol sayı: %d\n\n", *(int *)a_stack->content);
                 num_b = chose_number_b(stacks, *(int *)a_stack->content);
-                printf("num_b: %d\n", num_b);
                 index_a = pos(stacks->stack_a, *(int *)a_stack->content);
-                printf("indexa: %d\n", index_a);
                 index_b = pos(stacks->stack_b, num_b);
-                printf("indexb: %d\n", index_b);
                 move = move_number(stacks, index_a, index_b);
-                printf("move: %d\n", move);
                 if (move < chose_move || (move == chose_move && index_a < chose_index))
                 {
                         chose_index = index_a;
                         chose_move = move;
                 }
-                printf("chose index:%d\n", chose_index);
-                printf("chose move:%d\n", chose_move);
                 a_stack = a_stack->next;
-                printf("ra: %d rb: %d rr: %d --- rra: %d rrb: %d rrr: %d\n\n", stacks->ra, stacks->rb, stacks->rr, stacks->rra, stacks->rrb, stacks->rrr);
         }
-        printf("\n");
         return (chose_index);
 }
 
@@ -139,11 +130,9 @@ int chosen_number(t_stacks *stacks)
         a_stack = stacks->stack_a;
         while (a_stack)
         {
-                printf("pos in chosen number: %d\n\n", pos);
                 if (pos == index)
                 {
                         chose_number = *(int *)a_stack->content;
-                        printf("chose number in chosen number: %d\n\n", chose_number);
                         break ;
                 }
                 pos++;
@@ -180,24 +169,15 @@ void chosen_number_actions(t_stacks *stacks, int chose_number)
 {
         int index_a;
         int index_b;
-        int move;
         int num_b;
         t_list *a_stack;
 
         a_stack = stacks->stack_a;
         while (*(int *)a_stack->content != chose_number)
                 a_stack = a_stack->next;
-        printf("\n------------\nchose number: %d\n", chose_number);
-        printf("kontrol sayı: %d\n\n", *(int *)a_stack->content);
         num_b = chose_number_b(stacks, *(int *)a_stack->content);
-        printf("num_b: %d\n", num_b);
         index_a = pos(stacks->stack_a, *(int *)a_stack->content);
-        printf("indexa: %d\n", index_a);
         index_b = pos(stacks->stack_b, num_b);
-        printf("indexb: %d\n", index_b);
-        move = move_number(stacks, index_a, index_b);
-        printf("move: %d\n\n", move);
-        printf("ra: %d rb: %d rr: %d --- rra: %d rrb: %d rrr: %d\n\n", stacks->ra, stacks->rb, stacks->rr, stacks->rra, stacks->rrb, stacks->rrr);
+        move_number(stacks, index_a, index_b);
         do_action(stacks);
-        write_stack(stacks);
 }

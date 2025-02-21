@@ -24,6 +24,7 @@ int	main(int ac, char **av)
 
 			stacks = fill_stacks(ac, av);
             		turk_algorithm(stacks);
+			//write_stack(stacks);
 			free_stacks(stacks);
         	}
 	}
