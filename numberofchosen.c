@@ -55,15 +55,20 @@ void same_block_up(t_stacks *stacks, int index_a, int index_b)
 
 void same_block_down(t_stacks *stacks, int index_a, int index_b)
 {
-	if (index_a > index_b)
+        int move_a;
+        int move_b;
+
+        move_a = stacks->count_a - index_a;
+        move_b = stacks->count_b - index_b;
+	if (move_a >= move_b)
         {
-                stacks->rrr = index_b;
-                stacks->rra = index_a -index_b;
+                stacks->rrr = move_b;
+                stacks->rra = move_a - move_b;
         }
         else
         {
-                stacks->rrr = index_a;
-                stacks->rrb = index_b - index_a;
+                stacks->rrr = move_a;
+                stacks->rrb = move_b - move_a;
         }
 }
 
@@ -75,20 +80,21 @@ int	move_number(t_stacks *stacks, int index_a, int index_b)
         stacks->rra = 0;
         stacks->rrb = 0;
         stacks->rrr = 0;	
-	if (((stacks->count_a / 2) + (stacks->count_a % 2)) >= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) >= index_b)
+	if ((stacks->count_a / 2) >= index_a && (stacks->count_b / 2 ) >= index_b) // ++
         		same_block_up(stacks, index_a, index_b);
-	else if (((stacks->count_a / 2) + (stacks->count_a % 2)) <= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) >= index_b)
+	else if ((stacks->count_a / 2) < index_a && (stacks->count_b / 2 ) >= index_b) // -+
         { 
 		stacks->rra = stacks->count_a - index_a; 
                 stacks->rb = index_b;
         }
-	else if (((stacks->count_a / 2) + (stacks->count_a % 2)) >= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) <= index_b)
+	else if ((stacks->count_a / 2) >= index_a && (stacks->count_b / 2 ) < index_b) // +-
         {
 		stacks->rrb = stacks->count_b - index_b;
                 stacks->ra = index_a;
         }
-	else if (((stacks->count_a / 2) + (stacks->count_a % 2)) <= index_a && ((stacks->count_b / 2 ) + (stacks->count_b % 2)) <= index_b)
+	else if ((stacks->count_a / 2) < index_a && (stacks->count_b / 2 ) < index_b) // --
 		same_block_down(stacks, index_a, index_b);
+        // printf("ra:%d rb:%d rr:%d rra:%d rrb:%d rrr:%d \n", stacks->ra, stacks->rb, stacks->rr, stacks->rra, stacks->rrb, stacks->rrr);
 	return (stacks->ra + stacks->rb + stacks->rr + stacks->rra + stacks->rrb + stacks->rrr);
 }
 
@@ -107,7 +113,8 @@ int chosen_index(t_stacks *stacks, int chose_move, int chose_index)
                 index_a = pos(stacks->stack_a, *(int *)a_stack->content);
                 index_b = pos(stacks->stack_b, num_b);
                 move = move_number(stacks, index_a, index_b);
-                if (move < chose_move || (move == chose_move && index_a < chose_index))
+                // printf("move: %d \n", move);
+                if (move < chose_move)
                 {
                         chose_index = index_a;
                         chose_move = move;
@@ -126,6 +133,7 @@ int chosen_number(t_stacks *stacks)
 
         pos = 0;
         index = chosen_index(stacks, 5500, 500);
+        // // printf("index: %d\n", index);
         chose_number = -2147483648;
         a_stack = stacks->stack_a;
         while (a_stack)
@@ -138,6 +146,7 @@ int chosen_number(t_stacks *stacks)
                 pos++;
                 a_stack = a_stack->next;
         }
+        // printf("chose number:                                    %d \n", chose_number);
         return (chose_number);
 }
 
@@ -146,23 +155,23 @@ void do_action(t_stacks *stacks)
         int j;
 
         j = 0;
+        while (j++ < stacks->rr)
+                actions(stacks, "rr");
+        j = 0;
         while (j++ < stacks->ra)
                 actions(stacks, "ra");
         j = 0;
         while (j++ < stacks->rb)
                 actions(stacks, "rb");
         j = 0;
-        while (j++ < stacks->rr)
-                actions(stacks, "rr");
+        while (j++ < stacks->rrr)
+                actions(stacks, "rrr");
         j = 0;
         while (j++ < stacks->rra)
                 actions(stacks, "rra");
         j = 0;
         while (j++ < stacks->rrb)
                 actions(stacks, "rrb");
-        j = 0;
-        while (j++ < stacks->rrr)
-                actions(stacks, "rrr");
 }
 
 void chosen_number_actions(t_stacks *stacks, int chose_number)

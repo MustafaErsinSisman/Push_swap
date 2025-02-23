@@ -24,7 +24,13 @@ int	main(int ac, char **av)
 
 			stacks = fill_stacks(ac, av);
             		turk_algorithm(stacks);
-			//write_stack(stacks);
+			// write_stack(stacks);
+			// if (is_sort(stacks->stack_a) == 1)
+			// 	printf("büyükten küçüğe sıralı \n");
+			// else if (is_sort(stacks->stack_a) == -1)
+			// 	printf("küçükten büyüğe sıralı \n");
+			// else
+			// 	printf("sıralı değil \n");
 			free_stacks(stacks);
         	}
 	}

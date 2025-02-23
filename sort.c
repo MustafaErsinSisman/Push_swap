@@ -15,8 +15,8 @@
 int is_sort(t_list *stack)
 {
     t_list *tmp;
-    int asc = 1;
-    int desc = 1;
+    int min_to_max = 1;
+    int max_to_min = 1;
 
     if (!stack || !stack->next)
         return (-1);
@@ -24,14 +24,14 @@ int is_sort(t_list *stack)
     while (tmp->next)
     {
         if (*(int *)tmp->content > *(int *)tmp->next->content)
-            asc = 0;
+            min_to_max = 0;
         if (*(int *)tmp->content < *(int *)tmp->next->content)
-            desc = 0;
+            max_to_min = 0;
         tmp = tmp->next;
     }
-    if (desc)
+    if (max_to_min)
         return (1);
-    if (asc)
+    if (min_to_max)
         return (-1);
     return (0);
 }
@@ -228,29 +228,30 @@ void move_b_to_a(t_stacks *stacks)
 
 
 
-
-
-
-// void last_pa(t_stacks *stacks)
-// {
-
-// }
-
 void so_sort_time(t_stacks *stacks)
 {
     int chose_number;
 
     actions(stacks, "pb");
-    actions(stacks, "pb");
-    while (ft_lstsize(stacks->stack_a) > 3)
+    if (stacks->count_a > 4)
+        actions(stacks, "pb");
+    while (ft_lstsize(stacks->stack_a) > 3) // 3 olacak dikkat
     {
         chose_number = chosen_number(stacks);
         chosen_number_actions(stacks, chose_number);
         actions(stacks, "pb");
+        // printf("--------- chosen number: %d --------\n", chose_number);
     }
+    // write'ları silip diğerlerini aç
+
+    // write_stack(stacks);
     sort_b(stacks);
-    is_three_node(stacks);
-    //last_pa(stacks);
+    // write_stack(stacks);
+    if (is_sort(stacks->stack_a) != -1)
+        is_three_node(stacks);
+    // write_stack(stacks);
     move_b_to_a(stacks);
+    // write_stack(stacks);
     sort_a(stacks);
+    // write_stack(stacks);
 }
