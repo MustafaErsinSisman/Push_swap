@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
+/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:56:46 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/15 05:19:11 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:51:49 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	rb(t_stacks *stacks)
 
 void	rr(t_stacks *stacks)
 {
-	if ((!stacks->stack_a || !stacks->stack_a->next) &&
-		(!stacks->stack_b || !stacks->stack_b->next))
+	if ((!stacks->stack_a || !stacks->stack_a->next)
+		&& (!stacks->stack_b || !stacks->stack_b->next))
 		return ;
 	if (stacks->stack_a && stacks->stack_a->next)
 		ra(stacks);

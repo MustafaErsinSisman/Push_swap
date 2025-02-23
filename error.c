@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void error_text(void)
+void	error_text(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(-1);
@@ -21,7 +21,7 @@ void error_text(void)
 void	free_stacks(t_stacks *stacks)
 {
 	if (!stacks)
-		return;
+		return ;
 	ft_lstclear(&stacks->stack_a, free);
 	ft_lstclear(&stacks->stack_b, free);
 	free(stacks);

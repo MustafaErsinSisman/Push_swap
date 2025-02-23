@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   switch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
+/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:46:09 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/15 05:20:13 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/23 20:27:27 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	sb(t_stacks *stacks)
 
 void	ss(t_stacks *stacks)
 {
-	if ((!stacks || !stacks->stack_a || !(stacks->stack_a->next)) &&
-		(!stacks || !stacks->stack_b || !(stacks->stack_b->next)))
+	if ((!stacks || !stacks->stack_a || !(stacks->stack_a->next))
+		&& (!stacks || !stacks->stack_b || !(stacks->stack_b->next)))
 		return ;
 	sa(stacks);
 	sb(stacks);
@@ -55,7 +55,7 @@ void	pa(t_stacks *stacks)
 
 	if (!stacks->stack_b)
 		return ;
-	tmp = stacks->stack_b; 
+	tmp = stacks->stack_b;
 	stacks->stack_b = stacks->stack_b->next;
 	tmp->next = stacks->stack_a;
 	stacks->stack_a = tmp;

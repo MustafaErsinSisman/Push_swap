@@ -14,25 +14,18 @@
 
 int	main(int ac, char **av)
 {
+	t_stacks	*stacks;
+
 	if (ac >= 2)
 	{
 		if (!check_args(ac, av))
 			error_text();
-        	else
-        	{
-			t_stacks	*stacks;
-
+		else
+		{
 			stacks = fill_stacks(ac, av);
-            		turk_algorithm(stacks);
-			// write_stack(stacks);
-			// if (is_sort(stacks->stack_a) == 1)
-			// 	printf("büyükten küçüğe sıralı \n");
-			// else if (is_sort(stacks->stack_a) == -1)
-			// 	printf("küçükten büyüğe sıralı \n");
-			// else
-			// 	printf("sıralı değil \n");
+			turk_algorithm(stacks);
 			free_stacks(stacks);
-        	}
+		}
 	}
 	return (0);
 }

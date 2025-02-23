@@ -12,19 +12,41 @@
 
 #include "push_swap.h"
 
-int pos(t_list *stack, int number)
+int	pos(t_list *stack, int number)
 {
-        t_list *temp;
-        int pos;
+	t_list	*temp;
+	int		pos;
 
-        pos = 0;
-        temp = stack;
-        while (temp->next)
-        {
-                if (*(int *)temp->content == number)
-                        break ;
-                pos++;
-                temp = temp->next;
-        }
-        return (pos);
+	pos = 0;
+	temp = stack;
+	while (temp->next)
+	{
+		if (*(int *)temp->content == number)
+			break ;
+		pos++;
+		temp = temp->next;
+	}
+	return (pos);
+}
+
+int	move_number(t_stacks *stacks, int index_a, int index_b)
+{
+	int	move;
+
+	move = 0;
+	stacks->ra = 0;
+	stacks->rb = 0;
+	stacks->rr = 0;
+	stacks->rra = 0;
+	stacks->rrb = 0;
+	stacks->rrr = 0;
+	if (stacks->count_a / 2 >= index_a && stacks->count_b / 2 >= index_b)
+		move = up_and_up(stacks, index_a, index_b);
+	else if (stacks->count_a / 2 < index_a && stacks->count_b / 2 >= index_b)
+		move = down_to_up(stacks, index_a, index_b);
+	else if (stacks->count_a / 2 >= index_a && stacks->count_b / 2 < index_b)
+		move = up_to_down(stacks, index_a, index_b);
+	else if (stacks->count_a / 2 < index_a && stacks->count_b / 2 < index_b)
+		move = down_and_down(stacks, index_a, index_b);
+	return (move);
 }
