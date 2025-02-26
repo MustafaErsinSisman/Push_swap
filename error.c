@@ -15,7 +15,7 @@
 void	error_text(void)
 {
 	ft_putstr_fd("Error\n", 2);
-	exit(-1);
+	exit(1);
 }
 
 void	free_stacks(t_stacks *stacks)
@@ -25,10 +25,4 @@ void	free_stacks(t_stacks *stacks)
 	ft_lstclear(&stacks->stack_a, free);
 	ft_lstclear(&stacks->stack_b, free);
 	free(stacks);
-}
-
-void	error(t_stacks *stacks)
-{
-	free_stacks(stacks);
-	error_text();
 }

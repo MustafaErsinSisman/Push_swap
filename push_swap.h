@@ -15,11 +15,8 @@
 
 # include "./libft/libft.h"
 # include "./libft/ft_printf/ft_printf.h"
-# include <limits.h>
-
-# include <stdio.h>
 # include <stdlib.h>
-# include <fcntl.h>
+# include <limits.h>
 
 typedef struct s_stacks
 {
@@ -40,7 +37,6 @@ void		error(t_stacks *stacks);
 void		free_split(char **s);
 void		free_stacks(t_stacks *stacks);
 int			check_args(int ac, char **av);
-t_list		*stack_a(int ac, char **av);
 int			turk_algorithm(t_stacks *stacks);
 t_stacks	*fill_stacks(int ac, char **av);
 int			pos(t_list *stack, int number);

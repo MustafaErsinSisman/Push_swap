@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sort_b(t_stacks *stacks)
+static void	sort_b(t_stacks *stacks)
 {
 	int	max_indis;
 	int	rev_moves;

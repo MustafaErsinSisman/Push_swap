@@ -6,13 +6,13 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:24:35 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/23 20:24:59 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:44:00 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min_in_a(t_list *stack_a)
+static int	find_min_in_a(t_list *stack_a)
 {
 	t_list	*tmp;
 	int		min_value;
@@ -59,7 +59,7 @@ void	sort_a(t_stacks *stacks)
 	}
 }
 
-int	find_position_in_a(t_list *stack_a, int nbr)
+static int	find_position_in_a(t_list *stack_a, int nbr)
 {
 	t_list	*tmp;
 	int		pos;
@@ -85,7 +85,7 @@ int	find_position_in_a(t_list *stack_a, int nbr)
 	return (min_pos);
 }
 
-void	rotate_a(t_stacks *stacks, int pos)
+static void	rotate_a(t_stacks *stacks, int pos)
 {
 	int	half;
 

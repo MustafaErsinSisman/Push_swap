@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_list	*array(char **av)
+static t_list	*array(char **av)
 {
 	char	**s;
 	t_list	*a;
@@ -41,7 +41,7 @@ t_list	*array(char **av)
 	return (a);
 }
 
-t_list	*not_array(int ac, char **av)
+static t_list	*not_array(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*node;
@@ -65,7 +65,7 @@ t_list	*not_array(int ac, char **av)
 	return (a);
 }
 
-t_list	*stack_a(int ac, char **av)
+static t_list	*stack_a(int ac, char **av)
 {
 	t_list	*a;
 

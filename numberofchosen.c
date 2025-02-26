@@ -41,7 +41,7 @@ int	chose_number_b(t_stacks *stacks, int a_number)
 	return (num_b);
 }
 
-int	chosen_index(t_stacks *stacks, int chose_move, int chose_index)
+static int	chosen_index(t_stacks *stacks, int chose_move, int chose_index)
 {
 	t_list	*a_stack;
 	int		index_a;
@@ -90,7 +90,7 @@ int	chosen_number(t_stacks *stacks)
 	return (chose_number);
 }
 
-void	do_action(t_stacks *stacks)
+static void	do_action(t_stacks *stacks)
 {
 	int	j;
 
