@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:39:15 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/26 16:40:25 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:49:32 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "./libft/libft.h"
-# include "./libft/ft_printf/ft_printf.h"
-# include "./libft/get_next_line/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
+# include "./get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <limits.h>
 
