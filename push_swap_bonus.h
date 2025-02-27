@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:39:15 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/26 20:49:32 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/27 18:52:18 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "./ft_printf/ft_printf.h"
 # include "./get_next_line/get_next_line.h"
 # include <stdlib.h>
-# include <limits.h>
 
 typedef struct s_stacks
 {

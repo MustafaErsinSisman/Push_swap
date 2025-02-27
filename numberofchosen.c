@@ -14,31 +14,31 @@
 
 int	chose_number_b(t_stacks *stacks, int a_number)
 {
-	int		num_b;
+	int		chosen_num_b;
 	int		now_b;
 	t_list	*b_stack;
 
-	num_b = -2147483648;
+	chosen_num_b = INT_MIN;
 	b_stack = stacks->stack_b;
 	while (b_stack)
 	{
 		now_b = *(int *)b_stack->content;
-		if ((a_number > now_b) && num_b < now_b)
-			num_b = now_b;
+		if ((a_number > now_b) && chosen_num_b < now_b)
+			chosen_num_b = now_b;
 		b_stack = b_stack->next;
 	}
 	b_stack = stacks->stack_b;
-	if (num_b == -2147483648)
+	if (chosen_num_b == INT_MIN)
 	{
 		while (b_stack)
 		{
 			now_b = *(int *)b_stack->content;
-			if (num_b < now_b)
-				num_b = *(int *)b_stack->content;
+			if (chosen_num_b < now_b)
+				chosen_num_b = *(int *)b_stack->content;
 			b_stack = b_stack->next;
 		}
 	}
-	return (num_b);
+	return (chosen_num_b);
 }
 
 static int	chosen_index(t_stacks *stacks, int chose_move, int chose_index)
@@ -75,7 +75,7 @@ int	chosen_number(t_stacks *stacks)
 
 	pos = 0;
 	index = chosen_index(stacks, 5500, 500);
-	chose_number = -2147483648;
+	chose_number = INT_MIN;
 	a_stack = stacks->stack_a;
 	while (a_stack)
 	{

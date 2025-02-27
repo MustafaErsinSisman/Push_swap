@@ -38,24 +38,13 @@ int	is_sort(t_list *stack)
 	return (0);
 }
 
-void	is_two_node(t_stacks *stacks)
+static void	is_two_node(t_stacks *stacks)
 {
-	int	first;
-	int	second;
-
 	if (stacks->count_a == 2)
 	{
-		if (stacks->stack_a && stacks->stack_a->next)
-		{
-			first = *(int *)stacks->stack_a->content;
-			second = *(int *)stacks->stack_a->next->content;
-			if (first > second)
-			{
-				actions(stacks, "sa");
-				free_stacks(stacks);
-				exit(0);
-			}
-		}
+		actions(stacks, "sa");
+		free_stacks(stacks);
+		exit(0);
 	}
 }
 

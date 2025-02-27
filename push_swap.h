@@ -16,7 +16,8 @@
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
 # include <stdlib.h>
-# include <limits.h>
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_stacks
 {
@@ -34,7 +35,7 @@ typedef struct s_stacks
 
 void		error_text(void);
 void		error(t_stacks *stacks);
-void		free_split(char **s);
+int			free_split(char **s);
 void		free_stacks(t_stacks *stacks);
 int			check_args(int ac, char **av);
 int			turk_algorithm(t_stacks *stacks);
@@ -60,7 +61,6 @@ void		rra(t_stacks *stacks);
 void		rrb(t_stacks *stacks);
 void		rrr(t_stacks *stacks);
 int			is_sort(t_list *stack);
-void		is_two_node(t_stacks *stacks);
 void		is_three_node(t_stacks *stacks);
 void		move_b_to_a(t_stacks *stacks);
 void		sort_a(t_stacks *stacks);
