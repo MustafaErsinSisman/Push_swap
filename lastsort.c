@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:24:35 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/26 16:44:00 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/28 22:32:33 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,60 +59,42 @@ void	sort_a(t_stacks *stacks)
 	}
 }
 
-static int	find_position_in_a(t_list *stack_a, int nbr)
+static void	last_sort(int first_a, int last_a, int num_b, t_stacks *stacks)
 {
-	t_list	*tmp;
-	int		pos;
-	int		min_pos;
-	int		min_nbr;
-	int		now_nbr;
-
-	tmp = stack_a;
-	pos = 0;
-	min_pos = 0;
-	min_nbr = *(int *)stack_a->content;
-	while (tmp)
+	while (stacks->stack_b)
 	{
-		now_nbr = *(int *)tmp->content;
-		if (now_nbr > nbr && (min_nbr < nbr || now_nbr < min_nbr))
+		num_b = *(int *)stacks->stack_b->content;
+		if (first_a > num_b && last_a < num_b)
+			actions(stacks, "pa");
+		else if (last_a > num_b)
 		{
-			min_nbr = now_nbr;
-			min_pos = pos;
+			while (((first_a < num_b && last_a > num_b) || last_a > num_b))
+			{
+				actions(stacks, "rra");
+				last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
+				first_a = *(int *)(stacks->stack_a)->content;
+				if (first_a < last_a)
+					break ;
+			}
+			actions(stacks, "pa");
 		}
-		pos++;
-		tmp = tmp->next;
-	}
-	return (min_pos);
-}
-
-static void	rotate_a(t_stacks *stacks, int pos)
-{
-	int	half;
-
-	half = stacks->count_a / 2;
-	if (pos <= half)
-	{
-		while (pos-- > 0)
-			actions(stacks, "ra");
-	}
-	else
-	{
-		pos = stacks->count_a - pos;
-		while (pos-- > 0)
-			actions(stacks, "rra");
+		else
+			actions(stacks, "pa");
+		first_a = *(int *)(stacks->stack_a)->content;
+		last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
+		if (is_sort(stacks->stack_a) == -1)
+			break ;
 	}
 }
 
 void	move_b_to_a(t_stacks *stacks)
 {
-	int	number;
-	int	pos;
+	int	first_a;
+	int	last_a;
+	int	num_b;
 
-	while (stacks->stack_b)
-	{
-		number = *(int *)stacks->stack_b->content;
-		pos = find_position_in_a(stacks->stack_a, number);
-		rotate_a(stacks, pos);
-		actions(stacks, "pa");
-	}
+	first_a = *(int *)stacks->stack_a->content;
+	last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
+	num_b = *(int *)stacks->stack_b->content;
+	last_sort(first_a, last_a, num_b, stacks);
 }

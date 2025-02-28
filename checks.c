@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:53:10 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/27 17:15:08 by musisman         ###   ########.fr       */
+/*   Updated: 2025/02/28 15:51:03 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	check_atoi(const char *str, long *result)
 	sign = 1;
 	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i + 1] == '\0' || (str[i + 1] < '0' || str[i + 1] > '9'))
+		if (str[i + 1] == '\0')
 			return (0);
 		if (str[i++] == '-')
 			sign = -1;

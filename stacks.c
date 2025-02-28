@@ -17,7 +17,7 @@ static t_list	*free_values(int *value, char **s, t_list *a)
 	free(value);
 	free_split(s);
 	ft_lstclear(&a, free);
-	return (0);
+	return (NULL);
 }
 
 static t_list	*array(char **av)
@@ -81,8 +81,6 @@ static t_list	*stack_a(int ac, char **av)
 		a = array(av);
 	else
 		a = not_array(ac, av);
-	if (!a)
-		ft_lstclear(&a, free);
 	return (a);
 }
 

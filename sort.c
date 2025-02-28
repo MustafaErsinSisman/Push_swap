@@ -19,7 +19,7 @@ static void	sort_b(t_stacks *stacks)
 
 	if (is_sort(stacks->stack_b) != 1)
 	{
-		max_indis = pos(stacks->stack_b, chose_number_b(stacks, -2147483648));
+		max_indis = pos(stacks->stack_b, chose_number_b(stacks, INT_MIN));
 		if (max_indis <= stacks->count_b / 2)
 		{
 			while (max_indis-- > 0)
@@ -51,5 +51,7 @@ void	so_sort_time(t_stacks *stacks)
 	if (is_sort(stacks->stack_a) != -1)
 		is_three_node(stacks);
 	move_b_to_a(stacks);
+	while (stacks->count_b)
+		actions(stacks, "pa");
 	sort_a(stacks);
 }
