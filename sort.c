@@ -34,6 +34,33 @@ static void	sort_b(t_stacks *stacks)
 	}
 }
 
+static void	move_b_to_a(t_stacks *stacks)
+{
+	int	last_a;
+	int	first_a;
+	int	num_b;
+
+	while (stacks->stack_b)
+	{
+		num_b = *(int *)stacks->stack_b->content;
+		last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
+		if (last_a > num_b)
+		{
+			while ((last_a > num_b))
+			{
+				actions(stacks, "rra");
+				last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
+				first_a = *(int *)stacks->stack_a->content;
+				if (first_a < last_a)
+					break ;
+			}
+		}
+		actions(stacks, "pa");
+		if (is_sort(stacks->stack_a) == -1)
+			break ;
+	}
+}
+
 void	so_sort_time(t_stacks *stacks)
 {
 	int	chose_number;
