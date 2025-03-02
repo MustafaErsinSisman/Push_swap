@@ -63,7 +63,6 @@ void		rrr(t_stacks *stacks);
 int			is_sort(t_list *stack);
 void		is_three_node(t_stacks *stacks);
 void		move_b_to_a(t_stacks *stacks);
-void		sort_a(t_stacks *stacks);
 void		so_sort_time(t_stacks *stacks);
 void		actions(t_stacks *stacks, char *str);
 

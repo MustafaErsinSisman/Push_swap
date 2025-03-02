@@ -53,5 +53,6 @@ void	so_sort_time(t_stacks *stacks)
 	move_b_to_a(stacks);
 	while (stacks->count_b)
 		actions(stacks, "pa");
-	sort_a(stacks);
+	while (is_sort(stacks->stack_a) != -1)
+		actions(stacks, "rra");
 }

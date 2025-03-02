@@ -3,61 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lastsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:24:35 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/28 22:32:33 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/02 03:31:29 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	find_min_in_a(t_list *stack_a)
-{
-	t_list	*tmp;
-	int		min_value;
-	int		min_pos;
-	int		pos;
-
-	tmp = stack_a;
-	min_value = *(int *)stack_a->content;
-	min_pos = 0;
-	pos = 0;
-	while (tmp)
-	{
-		if (*(int *)tmp->content < min_value)
-		{
-			min_value = *(int *)tmp->content;
-			min_pos = pos;
-		}
-		pos++;
-		tmp = tmp->next;
-	}
-	return (min_pos);
-}
-
-void	sort_a(t_stacks *stacks)
-{
-	int	min_pos;
-	int	half;
-
-	min_pos = find_min_in_a(stacks->stack_a);
-	half = stacks->count_a / 2;
-	if (is_sort(stacks->stack_a) != -1)
-	{
-		if (min_pos <= half)
-		{
-			while (min_pos-- > 0)
-				actions(stacks, "ra");
-		}
-		else
-		{
-			min_pos = stacks->count_a - min_pos;
-			while (min_pos-- > 0)
-				actions(stacks, "rra");
-		}
-	}
-}
 
 static void	last_sort(int first_a, int last_a, int num_b, t_stacks *stacks)
 {
