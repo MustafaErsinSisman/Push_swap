@@ -34,7 +34,6 @@ typedef struct s_stacks
 }			t_stacks;
 
 void		error_text(void);
-void		error(t_stacks *stacks);
 int			free_split(char **s);
 void		free_stacks(t_stacks *stacks);
 int			check_args(int ac, char **av);

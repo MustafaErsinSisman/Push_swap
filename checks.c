@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 19:53:10 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/28 15:51:03 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:26:47 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ int	free_split(char **s)
 	return (0);
 }
 
-static int	check_atoi(const char *str, long *result)
+static int	check_atoi(const char *str)
 {
 	size_t	i;
+	long	result;
 	int		sign;
 
-	*result = 0;
+	result = 0;
 	i = 0;
 	sign = 1;
 	if (str[i] == '-' || str[i] == '+')
@@ -42,13 +43,13 @@ static int	check_atoi(const char *str, long *result)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		*result = *result * 10 + (str[i++] - '0');
-		if ((*result * sign) > INT_MAX || (*result * sign) < INT_MIN)
+		result = result * 10 + (str[i++] - '0');
+		if ((result * sign) > INT_MAX || (result * sign) < INT_MIN)
 			return (0);
 	}
 	if (str[i] != '\0')
 		return (0);
-	*result *= sign;
+	result *= sign;
 	return (1);
 }
 
@@ -77,7 +78,6 @@ static int	same(int ac, char **av)
 static int	is_array(int ac, char **av)
 {
 	char	**s;
-	long	value;
 	int		i;
 
 	if (ac == 2)
@@ -88,7 +88,7 @@ static int	is_array(int ac, char **av)
 		i = 0;
 		while (s[i])
 		{
-			if (!check_atoi(s[i], &value))
+			if (!check_atoi(s[i]))
 				return (free_split(s));
 			i++;
 		}
@@ -101,7 +101,6 @@ static int	is_array(int ac, char **av)
 
 int	check_args(int ac, char **av)
 {
-	long	value;
 	int		len;
 
 	if (!is_array(ac, av))
@@ -109,7 +108,7 @@ int	check_args(int ac, char **av)
 	len = 0;
 	while (++len < ac && ac > 2)
 	{
-		if (!check_atoi(av[len], &value))
+		if (!check_atoi(av[len]))
 			return (0);
 	}
 	if (!same(ac, av) && ac > 2)

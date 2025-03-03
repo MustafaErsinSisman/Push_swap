@@ -6,49 +6,35 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:49:19 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/26 16:40:48 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:10:46 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	actions(t_stacks *stacks, char *str, int *wrong)
 {
-	size_t	i;
-
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
-void	action(t_stacks *stacks, char *str, int *wrong)
-{
-	if (!ft_strcmp("sa\n", str))
+	if (!ft_strncmp("sa\n", str, 3))
 		sa(stacks);
-	else if (!ft_strcmp("sb\n", str))
+	else if (!ft_strncmp("sb\n", str, 3))
 		sb(stacks);
-	else if (!ft_strcmp("ss\n", str))
+	else if (!ft_strncmp("ss\n", str, 3))
 		ss(stacks);
-	else if (!ft_strcmp("pa\n", str))
+	else if (!ft_strncmp("pa\n", str, 3))
 		pa(stacks);
-	else if (!ft_strcmp("pb\n", str))
+	else if (!ft_strncmp("pb\n", str, 3))
 		pb(stacks);
-	else if (!ft_strcmp("rra\n", str))
+	else if (!ft_strncmp("rra\n", str, 4))
 		rra(stacks);
-	else if (!ft_strcmp("rrb\n", str))
+	else if (!ft_strncmp("rrb\n", str, 4))
 		rrb(stacks);
-	else if (!ft_strcmp("rrr\n", str))
+	else if (!ft_strncmp("rrr\n", str, 4))
 		rrr(stacks);
-	else if (!ft_strcmp("ra\n", str))
+	else if (!ft_strncmp("ra\n", str, 3))
 		ra(stacks);
-	else if (!ft_strcmp("rb\n", str))
+	else if (!ft_strncmp("rb\n", str, 3))
 		rb(stacks);
-	else if (!ft_strcmp("rr\n", str))
+	else if (!ft_strncmp("rr\n", str, 3))
 		rr(stacks);
 	else
 		*wrong = 1;

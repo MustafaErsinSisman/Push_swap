@@ -44,16 +44,13 @@ static void	move_b_to_a(t_stacks *stacks)
 	{
 		num_b = *(int *)stacks->stack_b->content;
 		last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
-		if (last_a > num_b)
+		while ((last_a > num_b))
 		{
-			while ((last_a > num_b))
-			{
-				actions(stacks, "rra");
-				last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
-				first_a = *(int *)stacks->stack_a->content;
-				if (first_a < last_a)
-					break ;
-			}
+			actions(stacks, "rra");
+			last_a = *(int *)ft_lstlast(stacks->stack_a)->content;
+			first_a = *(int *)stacks->stack_a->content;
+			if (first_a < last_a)
+				break ;
 		}
 		actions(stacks, "pa");
 		if (is_sort(stacks->stack_a) == -1)
@@ -80,6 +77,7 @@ void	so_sort_time(t_stacks *stacks)
 	move_b_to_a(stacks);
 	while (stacks->count_b)
 		actions(stacks, "pa");
+	
 	while (is_sort(stacks->stack_a) != -1)
 		actions(stacks, "rra");
 }

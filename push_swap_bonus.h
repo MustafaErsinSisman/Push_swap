@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:39:15 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/27 18:52:18 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:10:15 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_stacks
 }			t_stacks;
 
 void		error_text(void);
-void		error(t_stacks *stacks);
 void		free_split(char **s);
 void		free_stacks(t_stacks *stacks);
 int			check_args(int ac, char **av);
@@ -51,6 +50,6 @@ void		rra(t_stacks *stacks);
 void		rrb(t_stacks *stacks);
 void		rrr(t_stacks *stacks);
 int			is_sort(t_list *stack);
-void		action(t_stacks *stacks, char *str, int *wrong);
+void		actions(t_stacks *stacks, char *str, int *wrong);
 
 #endif
