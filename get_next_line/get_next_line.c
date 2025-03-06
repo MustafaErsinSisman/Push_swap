@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:52:44 by musisman          #+#    #+#             */
-/*   Updated: 2025/03/05 16:32:36 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/06 09:36:11 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ char	*ft_buffer_s(int fd, char *s)
 	return (s);
 }
 
-char	*get_next_line(int fd, int wrong)
+char	*get_next_line_strin(int wrong)
 {
 	static char	*s ;
 	char		*ptr;
+	int fd;
 
+	fd = 0;
 	if (wrong)
 	{
 		free(s);

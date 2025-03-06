@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:39:12 by musisman          #+#    #+#             */
-/*   Updated: 2025/03/05 16:30:35 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/06 09:36:36 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ static void	fill_strin(t_stacks *stacks)
 	int		wrong;
 
 	wrong = 0;
-	line = get_next_line(0, wrong);
+	line = get_next_line_strin(wrong);
 	while (line)
 	{
 		actions(stacks, line, &wrong);
 		if (wrong == 1)
 		{
-			get_next_line(1, wrong);
+			get_next_line_strin(wrong);
 			free_stacks(stacks);
 			free(line);
 			error_text();
 		}
 		free(line);
-		line = get_next_line(0, wrong);
+		line = get_next_line_strin(wrong);
 	}
 	free(line);
 }

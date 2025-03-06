@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:54:34 by musisman          #+#    #+#             */
-/*   Updated: 2025/03/05 16:29:33 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/06 09:36:18 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ char	*ft_strjoin_diff(char *s, char *buffer);
 char	*ft_strchr(const char *s, int c);
 char	*ft_line_s(char *s);
 char	*ft_new_line_s(char *s);
-char	*get_next_line(int fd, int wrong);
+char	*get_next_line_strin(int wrong);
 
 #endif

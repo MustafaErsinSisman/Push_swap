@@ -1,7 +1,7 @@
 NAME 		= push_swap
 BONUS		= checker
 CC		= cc
-FLAGS 		= -Wall -Wextra -Werror -g
+CFLAGS 		= -Wall -Wextra -Werror
 SRCS		= push_swap.c stacks.c switch.c \
 		  checks.c rotate.c rrotate.c \
 		  turks.c error.c actions.c sort.c \
@@ -20,11 +20,11 @@ all: $(NAME)
 
 $(NAME): $(SRCS)
 	make -C $(DIR_LIBFT) -s
-	$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 bonus: $(BONUSSRCS)
 	make -C $(DIR_LIBFT) -s
-	$(CC) $(FLAGS) $(BONUSSRCS) $(LIBFT) -o $(BONUS)
+	$(CC) $(CFLAGS) $(BONUSSRCS) $(LIBFT) -o $(BONUS)
 clean:
 	make -s -C $(DIR_LIBFT) clean
 
