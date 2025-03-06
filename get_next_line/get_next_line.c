@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:52:44 by musisman          #+#    #+#             */
-/*   Updated: 2025/03/06 09:36:11 by musisman         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:28:19 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*get_next_line_strin(int wrong)
 {
 	static char	*s ;
 	char		*ptr;
-	int fd;
+	int			fd;
 
 	fd = 0;
 	if (wrong)
